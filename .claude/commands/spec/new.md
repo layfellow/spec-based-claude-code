@@ -14,7 +14,7 @@ Create a new specification directory for the feature: $ARGUMENTS
 
 1. Determine the next ID number (format: 001, 002, etc.)
 2. Create directory: `spec/[ID]-$ARGUMENTS/`
-3. Update `spec/.current-spec` with the new spec ID
+3. Update `spec/.current-spec` with the new spec directory name ([ID]-$ARGUMENTS)
 4. Create a README.md in the new directory with:
    - Feature name
    - Creation date

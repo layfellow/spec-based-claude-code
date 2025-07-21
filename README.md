@@ -38,7 +38,7 @@ Each feature is developed through four sequential phases:
 │   ├── requirements.md
 │   ├── design.md
 │   └── tasks.md
-└── .current-spec
+└── .current-spec  # Stores the full spec directory name, e.g. 001-user-authentication
 ```
 
 ## Benefits
@@ -112,7 +112,7 @@ Create a new specification directory for the feature: $ARGUMENTS
 
 1. Determine the next ID number (format: 001, 002, etc.)
 2. Create directory: `spec/[ID]-$ARGUMENTS/`
-3. Update `spec/.current-spec` with the new spec ID
+3. Update `spec/.current-spec` with the new spec directory name ([ID]-$ARGUMENTS)
 4. Create a README.md in the new directory with:
    - Feature name
    - Creation date
@@ -352,7 +352,7 @@ argument-hint: <spec-id>
 Switch the active specification to: $ARGUMENTS
 
 1. Verify the spec directory exists
-2. Update spec/.current-spec with the new spec ID
+2. Update spec/.current-spec with the new spec directory name ([ID]-$ARGUMENTS)
 3. Show the status of the newly active spec
 4. Display next recommended action
 
@@ -827,7 +827,7 @@ git checkout -b spec/001-requirements
 cat spec/.current-spec
 
 # If empty, set it manually
-echo "001-user-authentication" > spec/.current-spec
+echo "001-user-authentication" > spec/.current-spec  # Use the full directory name
 
 # Or use switch command
 /spec:switch 001-user-authentication

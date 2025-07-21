@@ -442,13 +442,13 @@ fi`
 
 ```mermaid
 graph LR
-    A[/spec:new] --> B[/spec:requirements]
-    B --> C[/spec:approve requirements]
-    C --> D[/spec:design]
-    D --> E[/spec:approve design]
-    E --> F[/spec:tasks]
-    F --> G[/spec:approve tasks]
-    G --> H[/spec:implement]
+    A["/spec:new"] --> B["/spec:requirements"]
+    B --> C["/spec:approve requirements"]
+    C --> D["/spec:design"]
+    D --> E["/spec:approve design"]
+    E --> F["/spec:tasks"]
+    F --> G["/spec:approve tasks"]
+    G --> H["/spec:implement"]
 ```
 
 ## Workflow Example
@@ -568,18 +568,12 @@ graph LR
 ## Architecture Overview
 
 ### System Context
-```
-┌─────────────┐     HTTPS      ┌──────────────┐
-│   Browser   │───────────────▶│  API Gateway │
-└─────────────┘                 └──────┬───────┘
-                                       │
-                               ┌───────▼────────┐
-                               │  Auth Service  │
-                               └───────┬────────┘
-                                       │
-                               ┌───────▼────────┐
-                               │   PostgreSQL   │
-                               └────────────────┘
+
+```mermaid
+graph TD
+    A[Browser] --> B[API Gateway]
+    B --> C[Auth Service]
+    C --> D[PostgreSQL]
 ```
 
 ## Technology Stack
@@ -694,12 +688,7 @@ CREATE TABLE sessions (
 ```markdown
 # Implementation Tasks
 
-## Overview
-Total Estimated Time: 5 days  
-Start Date: 2024-01-22  
-Target Completion: 2024-01-26
-
-## Phase 1: Foundation Setup (1 day)
+## Phase 1: Foundation Setup
 
 ### Development Environment
 - [ ] Initialize Node.js project with TypeScript
@@ -713,7 +702,7 @@ Target Completion: 2024-01-26
 - [ ] Configure build scripts
 - [ ] Initialize Git repository
 
-## Phase 2: Backend Implementation (2 days)
+## Phase 2: Backend Implementation
 
 ### Database Layer
 - [ ] Create database migrations for users table
@@ -734,7 +723,7 @@ Target Completion: 2024-01-26
 - [ ] Add request validation
 - [ ] Set up error handling
 
-## Phase 3: Frontend Integration (1 day)
+## Phase 3: Frontend Integration
 
 ### Components
 - [ ] Create login form component
@@ -748,7 +737,7 @@ Target Completion: 2024-01-26
 - [ ] Handle token storage
 - [ ] Add logout functionality
 
-## Phase 4: Testing & Documentation (1 day)
+## Phase 4: Testing & Documentation
 
 ### Testing
 - [ ] Write unit tests for auth utilities

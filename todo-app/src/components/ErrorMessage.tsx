@@ -5,7 +5,7 @@ interface ErrorMessageProps {
 
 export function ErrorMessage({ message, onDismiss }: ErrorMessageProps) {
   return (
-    <div className="bg-red-50 border border-red-200 rounded-md p-4 mb-6">
+    <div className="bg-red-50 border border-red-200 rounded-md p-4 mb-4 sm:mb-6 shadow-md animate-pulse hover:animate-none transition-all duration-200">
       <div className="flex justify-between items-start">
         <div className="flex">
           <div className="flex-shrink-0">
@@ -19,7 +19,7 @@ export function ErrorMessage({ message, onDismiss }: ErrorMessageProps) {
         </div>
         <button
           onClick={onDismiss}
-          className="flex-shrink-0 ml-4 text-red-400 hover:text-red-600 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 focus:ring-offset-red-50 rounded"
+          className="flex-shrink-0 ml-4 text-red-400 hover:text-red-600 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 focus:ring-offset-red-50 rounded transition-all duration-200"
         >
           <span className="sr-only">Dismiss</span>
           <svg className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">

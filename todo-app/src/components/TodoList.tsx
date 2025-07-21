@@ -39,7 +39,7 @@ export function TodoList({ todos, onToggleTodo, onUpdateTodo, onDeleteTodo }: To
   });
 
   return (
-    <div className="divide-y divide-gray-200">
+    <div className="divide-y divide-gray-200" role="list" aria-label="Todo items">
       {sortedTodos.map((todo) => (
         <TodoItem
           key={todo.id}

@@ -86,19 +86,20 @@ export function TodoItem({ todo, onToggle, onUpdate, onDelete }: TodoItemProps) 
   };
 
   return (
-    <div className={`p-4 flex items-center gap-3 hover:bg-gray-50 transition-colors ${isDeleting ? 'opacity-50' : ''}`}>
+    <div className={`p-3 sm:p-4 flex items-center gap-3 hover:bg-gray-50 transition-all duration-200 ${isDeleting ? 'opacity-50 scale-95' : ''} ${isEditing ? 'bg-blue-50' : ''}`} role="listitem">
       {/* Checkbox */}
       <button
         onClick={handleToggle}
         disabled={isUpdating || isDeleting}
-        className={`flex-shrink-0 w-5 h-5 rounded border-2 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 ${
+        aria-label={`Mark "${todo.text}" as ${todo.completed ? 'incomplete' : 'completed'}`}
+        className={`flex-shrink-0 w-6 h-6 sm:w-5 sm:h-5 rounded border-2 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 ${
           todo.completed
-            ? 'bg-green-500 border-green-500 text-white'
-            : 'border-gray-300 hover:border-gray-400'
+            ? 'bg-green-500 border-green-500 text-white shadow-md'
+            : 'border-gray-300 hover:border-gray-400 hover:scale-105'
         } disabled:opacity-50`}
       >
         {todo.completed && (
-          <svg className="w-3 h-3 mx-auto" fill="currentColor" viewBox="0 0 20 20">
+          <svg className="w-4 h-4 sm:w-3 sm:h-3 mx-auto" fill="currentColor" viewBox="0 0 20 20">
             <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
           </svg>
         )}
@@ -115,17 +116,19 @@ export function TodoItem({ todo, onToggle, onUpdate, onDelete }: TodoItemProps) 
             onKeyDown={handleKeyDown}
             onBlur={handleSave}
             disabled={isUpdating}
+            aria-label={`Edit todo: ${todo.text}`}
             className="w-full px-2 py-1 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent disabled:opacity-50"
             maxLength={500}
           />
         ) : (
           <span
             onDoubleClick={handleEdit}
-            className={`cursor-pointer select-text ${
+            className={`cursor-pointer select-text transition-all duration-200 ${
               todo.completed
                 ? 'line-through text-gray-500'
                 : 'text-gray-800 hover:text-gray-600'
             }`}
+            aria-label={`${todo.text} - ${todo.completed ? 'completed' : 'incomplete'} todo`}
           >
             {todo.text}
           </span>
@@ -133,12 +136,13 @@ export function TodoItem({ todo, onToggle, onUpdate, onDelete }: TodoItemProps) 
       </div>
 
       {/* Action Buttons */}
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-1 sm:gap-2">
         {!isEditing && (
           <button
             onClick={handleEdit}
             disabled={isUpdating || isDeleting}
-            className="p-1 text-gray-400 hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded disabled:opacity-50"
+            aria-label={`Edit "${todo.text}"`}
+            className="p-2 sm:p-1 text-gray-400 hover:text-blue-600 hover:bg-blue-50 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded disabled:opacity-50 min-h-[44px] sm:min-h-0 transition-all duration-200"
             title="Edit todo"
           >
             <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
@@ -150,7 +154,8 @@ export function TodoItem({ todo, onToggle, onUpdate, onDelete }: TodoItemProps) 
         <button
           onClick={handleDelete}
           disabled={isUpdating || isDeleting}
-          className="p-1 text-gray-400 hover:text-red-600 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 rounded disabled:opacity-50"
+          aria-label={`Delete "${todo.text}"`}
+          className="p-2 sm:p-1 text-gray-400 hover:text-red-600 hover:bg-red-50 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 rounded disabled:opacity-50 min-h-[44px] sm:min-h-0 transition-all duration-200"
           title="Delete todo"
         >
           <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
@@ -161,7 +166,7 @@ export function TodoItem({ todo, onToggle, onUpdate, onDelete }: TodoItemProps) 
       </div>
 
       {/* Creation Date */}
-      <div className="text-xs text-gray-400 ml-2">
+      <div className="text-xs text-gray-400 ml-2 hidden sm:block">
         {todo.createdAt.toLocaleDateString()}
       </div>
     </div>

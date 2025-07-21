@@ -33,7 +33,7 @@ export function TodoForm({ onAddTodo }: TodoFormProps) {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="flex gap-3">
+    <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3">
       <div className="flex-1">
         <label htmlFor="todo-input" className="sr-only">
           Add a new todo
@@ -46,14 +46,14 @@ export function TodoForm({ onAddTodo }: TodoFormProps) {
           onKeyDown={handleKeyDown}
           placeholder="What needs to be done?"
           disabled={isSubmitting}
-          className="w-full px-4 py-3 text-gray-700 bg-white border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent disabled:opacity-50 disabled:cursor-not-allowed"
+          className="w-full px-4 py-3 text-gray-700 bg-white border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent focus:shadow-md disabled:opacity-50 disabled:cursor-not-allowed text-base transition-all duration-200"
           maxLength={500}
         />
       </div>
       <button
         type="submit"
         disabled={isSubmitting || !text.trim()}
-        className="bg-blue-600 text-white px-6 py-3 rounded-md font-medium hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+        className="bg-blue-600 text-white px-6 py-3 rounded-md font-medium hover:bg-blue-700 hover:shadow-lg hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 disabled:hover:shadow-none transition-all duration-200 min-h-[48px] sm:min-h-0"
       >
         {isSubmitting ? (
           <div className="flex items-center gap-2">

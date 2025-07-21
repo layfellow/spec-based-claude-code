@@ -27,12 +27,12 @@ export function TodoApp() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
-      <div className="max-w-2xl mx-auto px-4">
+    <div className="min-h-screen bg-gray-50 py-4 sm:py-8">
+      <div className="max-w-2xl mx-auto px-4 sm:px-6">
         {/* Header */}
-        <header className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-gray-800 mb-2">Todo App</h1>
-          <p className="text-gray-600">Stay organized and get things done</p>
+        <header className="text-center mb-6 sm:mb-8">
+          <h1 className="text-3xl sm:text-4xl font-bold text-gray-800 mb-2">Todo App</h1>
+          <p className="text-sm sm:text-base text-gray-600">Stay organized and get things done</p>
         </header>
 
         {/* Error Message */}
@@ -41,9 +41,9 @@ export function TodoApp() {
         )}
 
         {/* Add Todo Form */}
-        <div className="bg-white rounded-lg shadow-md p-6 mb-6">
+        <section className="bg-white rounded-lg shadow-md p-4 sm:p-6 mb-4 sm:mb-6 hover:shadow-lg transition-all duration-200" aria-label="Add new todo">
           <TodoForm onAddTodo={addTodo} />
-        </div>
+        </section>
 
         {/* Stats */}
         <TodoStats 
@@ -53,14 +53,14 @@ export function TodoApp() {
         />
 
         {/* Todo List */}
-        <div className="bg-white rounded-lg shadow-md">
+        <main className="bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-200" aria-label="Todo list">
           <TodoList
             todos={todos}
             onToggleTodo={toggleTodo}
             onUpdateTodo={updateTodo}
             onDeleteTodo={deleteTodo}
           />
-        </div>
+        </main>
 
         {/* Footer */}
         <footer className="text-center mt-8 text-sm text-gray-500">

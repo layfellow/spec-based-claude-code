@@ -20,9 +20,9 @@ export function TodoStats({ stats, onClearCompleted, showClearButton = false }: 
   }
 
   return (
-    <div className="bg-white rounded-lg shadow-md p-4 mb-6">
-      <div className="flex items-center justify-between">
-        <div className="flex items-center gap-6">
+    <div className="bg-white rounded-lg shadow-md p-4 mb-4 sm:mb-6 hover:shadow-lg transition-all duration-200" role="status" aria-live="polite">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-0">
+        <div className="flex items-center gap-4 sm:gap-6">
           <div className="text-sm text-gray-600">
             <span className="font-semibold text-gray-800">{stats.total}</span> total
           </div>
@@ -37,7 +37,8 @@ export function TodoStats({ stats, onClearCompleted, showClearButton = false }: 
         {showClearButton && (
           <button
             onClick={handleClearCompleted}
-            className="bg-gray-200 text-gray-700 text-sm px-3 py-1 rounded-md font-medium hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 transition-colors"
+            aria-label={`Clear all ${stats.completed} completed todos`}
+            className="bg-gray-200 text-gray-700 text-sm px-3 py-2 rounded-md font-medium hover:bg-gray-300 hover:shadow-md hover:scale-105 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 transition-all duration-200 min-h-[44px] sm:min-h-0 sm:py-1"
           >
             Clear Completed
           </button>

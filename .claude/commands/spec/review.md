@@ -1,3 +1,4 @@
+---
 allowed-tools: Bash(cat:*), Bash(test:*)
 description: Review current specification phase or implementation
 ---

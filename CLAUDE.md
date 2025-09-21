@@ -32,8 +32,8 @@ Each phase must be approved before proceeding to the next. Approval creates mark
 ## Project Structure
 
 ```
-spec/                     # All specifications stored here
-  001-<name>/            # Each spec has its own directory
+spec/                    # All specifications stored here
+  <name>/                # Each spec has its own directory
     README.md            # Current phase document
     .requirements-approved
     .design-approved
@@ -43,7 +43,6 @@ spec/                     # All specifications stored here
 
 ## Key Implementation Notes
 
-- Specs are numbered sequentially (001, 002, etc.)
 - Active spec is tracked in `spec/.current-spec`
 - Each command has specific tool permissions in its frontmatter
 - Custom permissions configured in `.claude/settings.local.json`
@@ -53,12 +52,12 @@ spec/                     # All specifications stored here
 
 When implementing features based on a spec:
 1. Check current status with `/spec:status`
-2. Review the current phase document in `spec/XXX-name/README.md`
+2. Review the current phase document in `spec/name/README.md`
 3. Follow the approved requirements, design, and task list
 4. Update task completion using checkboxes or `/spec:update-task`
 
 ## Git Conventions
 
-- Use descriptive commits: `spec(001): complete requirements phase`
+- Use descriptive commits: `spec: complete requirements phase`
 - Each phase completion should be committed
 - Keep spec documents under version control

@@ -28,17 +28,23 @@ Each feature is developed through four sequential phases:
 
 ### File Structure
 
+Example file structure:
+
 ```
 /spec/
-├── 001-user-authentication/
+├── main/
 │   ├── requirements.md
 │   ├── design.md
 │   └── tasks.md
-├── 002-payment-integration/
+├── user-authentication/
 │   ├── requirements.md
 │   ├── design.md
 │   └── tasks.md
-└── .current-spec  # Stores the full spec directory name, e.g. 001-user-authentication
+├── payment-integration/
+│   ├── requirements.md
+│   ├── design.md
+│   └── tasks.md
+└── .current-spec  # Stores the full spec directory name, e.g. user-authentication
 ```
 
 ## Benefits
@@ -110,14 +116,13 @@ argument-hint: <feature-name>
 
 Create a new specification directory for the feature: $ARGUMENTS
 
-1. Determine the next ID number (format: 001, 002, etc.)
-2. Create directory: `spec/[ID]-$ARGUMENTS/`
-3. Update `spec/.current-spec` with the new spec directory name ([ID]-$ARGUMENTS)
-4. Create a README.md in the new directory with:
+1. Create directory: `spec/$ARGUMENTS/`
+2. Update `spec/.current-spec` with the new spec directory name ($ARGUMENTS)
+3. Create a README.md in the new directory with:
    - Feature name
    - Creation date
    - Initial status checklist
-5. Inform the user about next steps
+4. Inform the user about next steps
 
 Use the Bash tool to create directories and files as needed.
 ```
@@ -284,7 +289,7 @@ done`
 ## Your Task
 
 Present a clear status report showing:
-1. All specifications with their IDs and names
+1. All specifications with their names
 2. Current active spec (highlighted)
 3. Phase completion status for each spec
 4. Task progress percentage if applicable
@@ -352,7 +357,7 @@ argument-hint: <spec-id>
 Switch the active specification to: $ARGUMENTS
 
 1. Verify the spec directory exists
-2. Update spec/.current-spec with the new spec directory name ([ID]-$ARGUMENTS)
+2. Update spec/.current-spec with the new spec directory name ($ARGUMENTS)
 3. Show the status of the newly active spec
 4. Display next recommended action
 
@@ -434,7 +439,7 @@ fi`
 | `/spec:approve` | Approve a specification phase | `/spec:approve requirements` |
 | `/spec:implement` | Start implementation phase | `/spec:implement [phase]` |
 | `/spec:status` | Show all specs and progress | `/spec:status` |
-| `/spec:switch` | Switch active specification | `/spec:switch 001-user-auth` |
+| `/spec:switch` | Switch active specification | `/spec:switch user-auth` |
 | `/spec:update-task` | Mark task as complete | `/spec:update-task "Create user model"` |
 | `/spec:review` | Review current phase | `/spec:review` |
 
@@ -458,7 +463,7 @@ graph LR
 ```bash
 # Day 1: Specification
 /spec:new user-authentication
-# Creates: spec/001-user-authentication/
+# Creates: spec/user-authentication/
 
 /spec:requirements
 # Claude creates requirements.md template
@@ -691,12 +696,14 @@ CREATE TABLE sessions (
 ## Phase 1: Foundation Setup
 
 ### Development Environment
+
 - [ ] Initialize Node.js project with TypeScript
 - [ ] Set up ESLint and Prettier
 - [ ] Configure Jest for testing
 - [ ] Create docker-compose for PostgreSQL
 
 ### Project Structure
+
 - [ ] Create src/ directory structure
 - [ ] Set up environment variables
 - [ ] Configure build scripts
@@ -705,12 +712,14 @@ CREATE TABLE sessions (
 ## Phase 2: Backend Implementation
 
 ### Database Layer
+
 - [ ] Create database migrations for users table
 - [ ] Create database migrations for sessions table
 - [ ] Implement database connection module
 - [ ] Create user repository layer
 
 ### Authentication Logic
+
 - [ ] Implement password hashing utilities
 - [ ] Create JWT token generation/validation
 - [ ] Build login endpoint
@@ -718,6 +727,7 @@ CREATE TABLE sessions (
 - [ ] Add session management
 
 ### Middleware
+
 - [ ] Create authentication middleware
 - [ ] Implement rate limiting
 - [ ] Add request validation
@@ -726,12 +736,14 @@ CREATE TABLE sessions (
 ## Phase 3: Frontend Integration
 
 ### Components
+
 - [ ] Create login form component
 - [ ] Add form validation
 - [ ] Implement error displays
 - [ ] Create loading states
 
 ### State Management
+
 - [ ] Set up auth context
 - [ ] Implement login action
 - [ ] Handle token storage
@@ -740,12 +752,14 @@ CREATE TABLE sessions (
 ## Phase 4: Testing & Documentation
 
 ### Testing
+
 - [ ] Write unit tests for auth utilities
 - [ ] Test API endpoints
 - [ ] Create integration tests
 - [ ] Manual testing checklist
 
 ### Documentation
+
 - [ ] API documentation
 - [ ] Setup instructions
 - [ ] Security guidelines
@@ -766,6 +780,7 @@ graph TD
 ## Definition of Done
 
 Each task is considered complete when:
+
 - Code is written and functional
 - Unit tests pass
 - Code review completed
@@ -775,6 +790,7 @@ Each task is considered complete when:
 ## Best Practices
 
 ### 1. Phase Discipline
+
 - ✅ Complete phases sequentially
 - ✅ Review thoroughly before approval
 - ✅ Keep approval markers in version control
@@ -782,6 +798,7 @@ Each task is considered complete when:
 - ❌ Don't implement without approved specs
 
 ### 2. Documentation Standards
+
 - ✅ Use clear, specific language
 - ✅ Include concrete examples
 - ✅ Add diagrams where helpful
@@ -789,6 +806,7 @@ Each task is considered complete when:
 - ❌ Don't over-engineer early phases
 
 ### 3. Task Management
+
 - ✅ Update task status immediately
 - ✅ Keep tasks small and specific
 - ✅ Include time estimates
@@ -796,25 +814,27 @@ Each task is considered complete when:
 - ❌ Don't batch status updates
 
 ### 4. Command Usage
+
 - ✅ Use commands in sequence
 - ✅ Review output before proceeding
 - ✅ Keep spec/.current-spec updated
 - ❌ Don't modify approval files manually
 
 ### 5. Version Control
+
 ```bash
 # Good commit messages
-git commit -m "spec(001): complete requirements phase"
-git commit -m "spec(001): add security requirements"
-git commit -m "impl(001): complete user model (tasks 3-5)"
+git commit -m "spec: complete requirements phase"
+git commit -m "spec: add security requirements"
+git commit -m "impl: complete user model (tasks 3-5)"
 
 # Include spec files in commits
-git add spec/001-user-authentication/
-git commit -m "spec(001): approve design phase"
+git add spec/user-authentication/
+git commit -m "spec: approve design phase"
 
 # Branch naming
-git checkout -b feature/001-user-authentication
-git checkout -b spec/001-requirements
+git checkout -b feature/user-authentication
+git checkout -b spec/requirements
 ```
 
 ## Troubleshooting
@@ -822,37 +842,41 @@ git checkout -b spec/001-requirements
 ### Common Issues and Solutions
 
 #### "No active spec" Error
+
 ```bash
 # Check current spec
 cat spec/.current-spec
 
 # If empty, set it manually
-echo "001-user-authentication" > spec/.current-spec  # Use the full directory name
+echo "user-authentication" > spec/.current-spec  # Use the full directory name
 
 # Or use switch command
-/spec:switch 001-user-authentication
+/spec:switch user-authentication
 ```
 
 #### Phase Not Approved
+
 ```bash
 # Check approval status
-ls -la spec/001-user-authentication/.*-approved
+ls -la spec/user-authentication/.*-approved
 
 # Approve if ready
 /spec:approve requirements
 ```
 
 #### Tasks Not Updating
+
 ```bash
 # Ensure you're using Write tool in Claude
 # When updating tasks, be specific:
 /spec:update-task "exact task description"
 
 # Or manually edit and have Claude read
-vi spec/001-user-authentication/tasks.md
+vi spec/user-authentication/tasks.md
 ```
 
 #### Command Not Found
+
 ```bash
 # Check command exists
 ls .claude/commands/spec/
@@ -875,8 +899,8 @@ Create reusable templates for common project types:
 mkdir -p .claude/templates/web-api
 
 # Add template files
-cp spec/001-user-authentication/requirements.md .claude/templates/web-api/
-cp spec/001-user-authentication/design.md .claude/templates/web-api/
+cp spec/user-authentication/requirements.md .claude/templates/web-api/
+cp spec/user-authentication/design.md .claude/templates/web-api/
 ```
 
 ### Automated Status Reports
@@ -904,7 +928,9 @@ Link specs to GitHub issues:
 
 ```markdown
 # In your spec files, reference issues
+
 ## Related Issues
+
 - Implements: #123
 - Fixes: #124, #125
 - Related to: #126
@@ -931,7 +957,7 @@ When specs are complete:
 mkdir -p spec/archive/2024
 
 # Move completed specs
-mv spec/001-user-authentication spec/archive/2024/
+mv spec/user-authentication spec/archive/2024/
 
 # Update current spec if needed
 echo "" > spec/.current-spec
